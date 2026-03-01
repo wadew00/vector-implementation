@@ -12,7 +12,23 @@ public:
   // constructor
   Vector() : sz{0}, arr{nullptr} {};
   Vector(std::size_t s) : sz{s}, arr{new double[s]} {};
+  // copy constructor
+  Vector(const Vector &v) : sz{v.sz}, arr{new double[v.sz]}
+  {
+    std::copy(v.arr, v.arr + v.sz, arr);
+  }
+  // assignment operator
+  Vector &operator=(const Vector &v)
+  {
+    if (this == &v)
+      return *this;
 
+    delete[] arr;
+    sz = v.sz;
+    arr = new double[sz];
+    std::copy(v.arr, v.arr + v.size(), arr);
+    return *this;
+  }
   // destructor
   ~Vector() { delete[] arr; }
   // GETTER and SETTER

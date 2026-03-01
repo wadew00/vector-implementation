@@ -6,6 +6,8 @@ class Vector
 public:
   Vector();
   Vector(std::size_t s);
+  Vector(const Vector &v);
+  Vector &operator=(const Vector &v);
   ~Vector();
   double get(std::size_t i) const;
   void set(std::size_t i, double d);
