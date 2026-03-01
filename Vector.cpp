@@ -7,6 +7,11 @@ class Vector
 private:
   std::size_t sz;
   double *arr;
+  void swap(Vector &v)
+  {
+    std::swap(sz, v.sz);
+    std::swap(arr, v.arr);
+  }
 
 public:
   // constructor
@@ -19,15 +24,11 @@ public:
     std::copy(v.arr, v.arr + v.sz, arr);
   }
   // assignment operator
+  // (with copy-swap)
   Vector &operator=(const Vector &v)
   {
-    if (this == &v)
-      return *this;
-
-    delete[] arr;
-    sz = v.sz;
-    arr = new double[sz];
-    std::copy(v.arr, v.arr + v.size(), arr);
+    Vector cpy(v);
+    swap(cpy);
     return *this;
   }
   // destructor
