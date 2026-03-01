@@ -34,13 +34,13 @@ public:
   // destructor
   ~Vector() { delete[] arr; }
   // GETTER and SETTER
-  double get(std::size_t i) const
+  double operator[](std::size_t s) const
   {
-    return arr[i];
+    return arr[s];
   }
-  double set(std::size_t i, double d)
+  double &operator[](std::size_t s)
   {
-    arr[i] = d;
+    return arr[s];
   }
   std::size_t size() const
   {
@@ -51,13 +51,14 @@ public:
 int main()
 {
   Vector v(32);
-  for (std::size_t i = 0; i != v.size(); ++i)
+  for (std::size_t i = 0; i < v.size(); ++i)
   {
-    v.set(i, i * i);
+    v[i] = i;
   }
-  for (std::size_t i = 0; i != v.size(); ++i)
+  Vector w = v; // copy constructor
+  for (std::size_t i = 0; i < w.size(); ++i)
   {
-    std::cout << v.get(i) << " ";
+    w[i] = i * i;
   }
   return 0;
 }

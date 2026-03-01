@@ -9,8 +9,7 @@ public:
   Vector(const Vector &v);
   Vector &operator=(const Vector &v);
   ~Vector();
-  double get(std::size_t i) const;
-  void set(std::size_t i, double d);
+  double operator[](std::size_t s);
   std::size_t size() const;
 };
 #endif
