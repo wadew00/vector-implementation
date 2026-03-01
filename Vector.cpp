@@ -31,6 +31,17 @@ public:
     swap(cpy);
     return *this;
   }
+  // move constructor
+  Vector(Vector &&v) : Vector()
+  {
+    swap(v);
+  }
+  // move assignment
+  Vector &operator=(Vector &&v)
+  {
+    swap(v);
+    return *this;
+  }
   // destructor
   ~Vector() { delete[] arr; }
   // GETTER and SETTER
