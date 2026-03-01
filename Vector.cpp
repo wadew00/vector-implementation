@@ -13,7 +13,8 @@ public:
   Vector() : sz{0}, arr{nullptr} {};
   Vector(std::size_t s) : sz{s}, arr{new double[s]} {};
   // copy constructor
-  Vector(const Vector &v) : sz{v.sz}, arr{new double[v.sz]}
+  // (with constructor delegation)
+  Vector(const Vector &v) : Vector(v.sz)
   {
     std::copy(v.arr, v.arr + v.sz, arr);
   }
