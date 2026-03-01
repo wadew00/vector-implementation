@@ -46,6 +46,15 @@ public:
   {
     return sz;
   }
+  // Iterator
+  double *begin()
+  {
+    return arr;
+  }
+  double *end()
+  {
+    arr + sz;
+  }
 };
 
 int main()
@@ -59,6 +68,11 @@ int main()
   for (std::size_t i = 0; i < w.size(); ++i)
   {
     w[i] = i * i;
+  }
+  const auto u = w;
+  for (std::size_t i = 0; i < u.size(); ++i)
+  {
+    std::cout << v[i] << ":" << u[i] << " ";
   }
   return 0;
 }
